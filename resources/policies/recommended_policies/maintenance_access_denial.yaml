@@ -1,0 +1,17 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: block-sbin-access
+spec:
+  severity: 10
+  message: "maintainence tools access not allowed"
+  tags:
+  - WARNING
+  selector:
+    matchLabels:
+      kubearmor.io/container.name: homeassistant
+  process:
+    matchDirectories:
+    - dir: /sbin/
+  action:
+    Block

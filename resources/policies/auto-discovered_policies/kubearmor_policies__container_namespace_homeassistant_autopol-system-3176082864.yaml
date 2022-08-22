@@ -1,0 +1,389 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: autopol-system-3176082864
+  namespace: container_namespace
+spec:
+  action: Allow
+  file:
+    matchDirectories:
+    - dir: /etc/
+      fromSource:
+      - path: /bin/bash
+      recursive: true
+    - dir: /package/admin/s6-overlay-3.1.0.1/etc/s6-rc/sources/
+      fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-compile
+      recursive: true
+    - dir: /proc/
+      fromSource:
+      - path: /bin/netstat
+      - path: /bin/uname
+      - path: /command/file
+      - path: /usr/local/bin/python3
+      - path: /usr/local/bin/python3.10
+      recursive: true
+    - dir: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-fdholder/
+      fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      recursive: true
+    - dir: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-fdholder/supervise/
+      fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      recursive: true
+    - dir: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-oneshot-runner/
+      fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      recursive: true
+    - dir: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-oneshot-runner/supervise/
+      fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      recursive: true
+    - dir: /run/s6/container_environment/
+      fromSource:
+      - path: /usr/local/sbin/bashio
+      recursive: true
+    - dir: /run/s6/container_environment:envdump:ImOCFI/
+      fromSource:
+      - path: /package/admin/s6-linux-init-1.0.7.3/command/s6-linux-init
+      recursive: true
+    - dir: /run/s6/db/
+      fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-compile
+      recursive: true
+    - dir: /run/s6/db/servicedirs/s6rc-fdholder/data/rules/uid/0/env/
+      fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      recursive: true
+    - dir: /run/s6/legacy-services/home-assistant/supervise/
+      fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      recursive: true
+    - dir: /run/service/s6-linux-init-shutdownd/supervise/
+      fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      recursive: true
+    - dir: /sys/
+      fromSource:
+      - path: /bin/uname
+      recursive: true
+    - dir: /usr/local/lib/python3.10/
+      fromSource:
+      - path: /usr/local/bin/python3.10
+      recursive: true
+    - dir: /lib/x86_64-linux-gnu/
+      recursive: true
+    - dir: /config/
+      fromSource:
+      - path: /usr/local/bin/python3.10
+      recursive: true
+    matchPaths:
+    - fromSource:
+      - path: /command/s6-ls
+      - path: /package/admin/s6-overlay-3.1.0.1/command/printcontenv
+      - path: /package/admin/s6-portable-utils-2.2.4.0/command/s6-ls
+      - path: /package/admin/s6/command/s6-svscan
+      - path: /usr/local/bin/python3.10
+      path: /dev/null
+    - fromSource:
+      - path: /bin/bash
+      path: /dev/tty
+    - fromSource:
+      - path: /package/admin/s6-portable-utils-2.2.4.0/command/s6-ls
+      path: /etc/fix-attrs.d
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-compile
+      path: /etc/s6-overlay/s6-rc.d/user/contents.d
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-compile
+      path: /etc/s6-overlay/s6-rc.d/user/type
+    - fromSource:
+      - path: /package/admin/s6-portable-utils-2.2.4.0/command/s6-hiercopy
+      path: /etc/services.d/home-assistant/finish
+    - fromSource:
+      - path: /package/admin/s6-portable-utils-2.2.4.0/command/s6-hiercopy
+      path: /etc/services.d/home-assistant/run
+    - fromSource:
+      - path: /package/admin/s6-portable-utils-2.2.4.0/command/s6-ls
+      path: /etc/services.d
+    - fromSource:
+      - path: /usr/bin/curl
+      path: /lib/libcrypto.so.1.1
+    - fromSource:
+      - path: /usr/bin/curl
+      path: /lib/libz.so.1.2.12
+    - fromSource:
+      - path: /usr/local/bin/python3.10
+      path: /lib
+    - fromSource:
+      - path: /usr/local/bin/python3.10
+      path: /root/.cache/matplotlib/fontlist-v330.json.matplotlib-lock
+    - fromSource:
+      - path: /usr/local/bin/python3.10
+      path: /root/.cache/matplotlib/fontlist-v330.json
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc
+      path: /run/s6-rc:s6-rc-init:PmkmeF/lock
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      path: /run/s6-rc:s6-rc-init:PmkmeF/prefix
+    - fromSource:
+      - path: /package/admin/s6/command/s6-ftrigrd
+      path: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-fdholder/event/.ftrig1:@4000000062e7b34a35b73f41:qZscjb
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-fdholder/event/ftrig1:@4000000062e7b34a35b73f41:qZscjb
+    - fromSource:
+      - path: /package/admin/s6/command/s6-ftrigrd
+      path: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-oneshot-runner/event/.ftrig1:@4000000062e7b34a35bc587d:H3FMBQ
+    - fromSource:
+      - path: /package/admin/s6/command/s6-ftrigrd
+      path: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-oneshot-runner/event/.ftrig1:@4000000062e7b34a360a74be:pbP8Um
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-oneshot-runner/event/ftrig1:@4000000062e7b34a35bc587d:H3FMBQ
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-oneshot-runner/event/ftrig1:@4000000062e7b34a360a74be:pbP8Um
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-oneshot-runner/notification-fd
+    - fromSource:
+      - path: /package/admin/s6/command/s6-ipcserver-socketbinder
+      path: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-oneshot-runner/s.lock
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-svc
+      path: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-oneshot-runner/supervise/control
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-svlisten1
+      path: /run/s6-rc:s6-rc-init:PmkmeF/servicedirs/s6rc-oneshot-runner/supervise/status
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc
+      path: /run/s6-rc:s6-rc-init:PmkmeF/state.new
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      path: /run/s6-rc:s6-rc-init:PmkmeF/state
+    - fromSource:
+      - path: /package/admin/s6-overlay-3.1.0.1/command/printcontenv
+      path: /run/s6/container_environment/S6_CMD_WAIT_FOR_SERVICES
+    - fromSource:
+      - path: /package/admin/s6-overlay-3.1.0.1/command/printcontenv
+      path: /run/s6/container_environment/S6_CMD_WAIT_FOR_SERVICES_MAXTIME
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-envdir
+      path: /run/s6/container_environment
+    - fromSource:
+      - path: /package/admin/s6-overlay-3.1.0.1/etc/s6-rc/scripts/cont-init
+      - path: /package/admin/s6-overlay-3.1.0.1/etc/s6-rc/scripts/services-up
+      path: /run/s6/db/db
+    - fromSource:
+      - path: /package/admin/s6-overlay-3.1.0.1/etc/s6-rc/scripts/services-up
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc
+      path: /run/s6/db/lock
+    - fromSource:
+      - path: /package/admin/s6-overlay-3.1.0.1/etc/s6-rc/scripts/cont-init
+      - path: /package/admin/s6-overlay-3.1.0.1/etc/s6-rc/scripts/services-up
+      path: /run/s6/db/n
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc
+      path: /run/s6/db/resolve.cdb
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      path: /run/s6/db/servicedirs/s6rc-fdholder/data/autofilled
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      path: /run/s6/db/servicedirs/s6rc-fdholder/data/rules/gid/0/allow
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      path: /run/s6/db/servicedirs/s6rc-fdholder/data/rules/uid/0/allow
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      path: /run/s6/db/servicedirs/s6rc-fdholder/notification-fd
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      path: /run/s6/db/servicedirs/s6rc-oneshot-runner/data/rules/gid/0
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      path: /run/s6/db/servicedirs/s6rc-oneshot-runner/data/rules/uid/0/allow
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      path: /run/s6/db/servicedirs/s6rc-oneshot-runner/notification-fd
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      path: /run/s6/db/servicedirs/s6rc-oneshot-runner/run
+    - fromSource:
+      - path: /package/admin/s6/command/s6-ftrigrd
+      path: /run/s6/legacy-services/home-assistant/event/.ftrig1:@4000000062e7b34a389cdb7c:lDH_u0
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /run/s6/legacy-services/home-assistant/event
+    - fromSource:
+      - path: /package/admin/s6-portable-utils-2.2.4.0/command/s6-hiercopy
+      path: /run/s6/legacy-services/home-assistant/finish
+    - fromSource:
+      - path: /package/admin/s6-portable-utils-2.2.4.0/command/s6-hiercopy
+      path: /run/s6/legacy-services/home-assistant/run
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      - path: /package/admin/s6/command/s6-svscan
+      path: /run/service/.s6-svscan/control
+    - fromSource:
+      - path: /package/admin/s6/command/s6-svscan
+      path: /run/service/.s6-svscan/lock
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /run/service/s6-linux-init-shutdownd/event
+    - fromSource:
+      - path: /package/admin/s6-linux-init/command/s6-linux-init-shutdownd
+      path: /run/service/s6-linux-init-shutdownd/run
+    - fromSource:
+      - path: /usr/bin/curl
+      path: /usr/lib/libcurl.so.4.8.0
+    - fromSource:
+      - path: /bin/uname
+      path: /usr/lib/libgcc_s.so.1
+    - fromSource:
+      - path: /bin/bash
+      path: /usr/lib/libncursesw.so.6.3
+    - fromSource:
+      - path: /usr/bin/curl
+      path: /usr/lib/libnghttp2.so.14.21.2
+    - fromSource:
+      - path: /usr/local/bin/python3.10
+      path: /usr/lib/libpcap.so.1.10.1
+    - fromSource:
+      - path: /bin/bash
+      path: /usr/lib/libreadline.so.8.1
+    - fromSource:
+      - path: /bin/uname
+      path: /usr/lib/libstdc++.so.6.0.29
+    - fromSource:
+      - path: /bin/uname
+      path: /usr/local/lib/libjemalloc.so.2
+    - fromSource:
+      - path: /usr/local/bin/python3.10
+      path: /usr/src/homeassistant/homeassistant.egg-info/entry_points.txt
+  network:
+    matchProtocols:
+    - fromSource:
+      - path: /usr/local/bin/python3.10
+      protocol: raw
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-ipcclient
+      - path: /package/admin/s6-2.11.1.0/command/s6-sudoc
+      - path: /usr/bin/curl
+      - path: /usr/local/bin/python3.10
+      protocol: tcp
+    - fromSource:
+      - path: /usr/local/bin/python3.10
+      protocol: udp
+  process:
+    matchPaths:
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /bin/bash
+    - fromSource:
+      - path: /usr/local/bin/python3.10
+      path: /bin/uname
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /command/emptyenv
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /command/exec
+    - fromSource:
+      - path: /package/admin/execline-2.8.3.0/command/ifelse
+      path: /command/importas
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /command/s6-envdir
+    - fromSource:
+      - path: /package/admin/execline-2.8.3.0/command/ifelse
+      path: /command/s6-test
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /package/admin/execline/command/fdmove
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc
+      path: /package/admin/s6-2.11.1.0/command/s6-ipcclient
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc
+      path: /package/admin/s6-2.11.1.0/command/s6-sudoc
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-svscan
+      path: /package/admin/s6-2.11.1.0/command/s6-supervise
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-svlisten1
+      path: /package/admin/s6-2.11.1.0/command/s6-svc
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc
+      path: /package/admin/s6-2.11.1.0/command/s6-svlisten1
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /package/admin/s6-linux-init/command/s6-linux-init-shutdownd
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-sudod
+      path: /package/admin/s6-overlay-3.1.0.1/etc/s6-rc/scripts/cont-init
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-sudod
+      path: /package/admin/s6-overlay-3.1.0.1/etc/s6-rc/scripts/fix-attrs
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-sudod
+      path: /package/admin/s6-overlay-3.1.0.1/etc/s6-rc/scripts/services-up
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-sudod
+      path: /package/admin/s6-rc/command/s6-rc-oneshot-run
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-svlisten1
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+      path: /package/admin/s6/command/s6-ftrigrd
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-ipcserverd
+      path: /package/admin/s6/command/s6-ipcserver-access
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /package/admin/s6/command/s6-ipcserver-socketbinder
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /package/admin/s6/command/s6-ipcserverd
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc
+      path: /package/admin/s6/command/s6-sudo
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-ipcserverd
+      path: /package/admin/s6/command/s6-sudod
+    - fromSource:
+      - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc
+      path: /package/admin/s6/command/s6-svc
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-svscan
+      path: /run/s6/basedir/scripts/rc.init
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      path: /usr/bin/bashio
+    - fromSource:
+      - path: /bin/bash
+      path: /usr/bin/curl
+    - fromSource:
+      - path: /package/admin/s6-2.11.1.0/command/s6-supervise
+      - path: /usr/local/bin/python3.10
+      path: /usr/local/bin/python3
+    - path: /bin/ls
+    - path: /usr/local/bin/python3.10
+    - path: /command/s6-ls
+    - path: /package/admin/s6-overlay-3.1.0.1/command/printcontenv
+    - path: /package/admin/s6-portable-utils-2.2.4.0/command/s6-ls
+    - path: /package/admin/s6/command/s6-svscan
+    - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-compile
+    - path: /package/admin/s6-portable-utils-2.2.4.0/command/s6-hiercopy
+    - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc
+    - path: /package/admin/s6-rc-0.5.3.0/command/s6-rc-init
+    - path: /package/admin/s6-2.11.1.0/command/s6-envdir
+    - path: /bin/netstat
+    - path: /command/file
+    - path: /usr/local/sbin/bashio
+    - path: /package/admin/s6-linux-init-1.0.7.3/command/s6-linux-init
+  selector:
+    matchLabels:
+      kubearmor.io/container.name: homeassistant
+  severity: 1
