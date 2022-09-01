@@ -49,9 +49,30 @@ sudo apt install ./kubearmor_0.5.5_linux-amd64.deb
 
 > Note that the above automatically installs `bpfcc-tools` with our package, but your distribution might have an older version of BCC. In case of errors, consider installing `bcc` from [source](https://github.com/iovisor/bcc/blob/master/INSTALL.md#source).
 
+---
+<details><summary> Note: For distributions other than Ubuntu/Debian</summary>
+<p>
+
+i. Refer [Installing BCC](https://github.com/iovisor/bcc/blob/master/INSTALL.md#installing-bcc) to install pre-requisites.
+
+ii. Download release tarball from KubeArmor [releases](https://github.com/kubearmor/KubeArmor/releases)
+  ```
+  wget https://github.com/kubearmor/KubeArmor/releases/download/v0.5.5/kubearmor_0.5.5_linux-amd64.tar.gz
+  ```
+
+iii. Unpack the tarball to the root directory:
+  ```
+  sudo tar --no-overwrite-dir -C / -xzf kubearmor_0.5.5_linux-amd64.tar.gz
+  ```
+</p>
+</details>
+
+---
+
 3. Start KubeArmor
 
 ```
+sudo systemctl daemon-reload
 sudo systemctl start kubearmor
 ```
 
@@ -86,6 +107,25 @@ wget https://github.com/accuknox/discovery-engine/releases/download/v0.6.3/knoxA
 ```
 sudo apt install ./knoxAutoPolicy_0.6.3_linux-amd64.deb
 ```
+
+
+---
+<details><summary> Note: For distributions other than Ubuntu/Debian</summary>
+<p>
+
+i. Download release tarball from KubeArmor [releases](https://github.com/kubearmor/KubeArmor/releases)
+  ```
+  wget https://github.com/accuknox/discovery-engine/releases/download/v0.6.3/knoxAutoPolicy_0.6.3_linux-amd64.tar.gz
+  ```
+
+ii. Unpack the tarball to the root directory:
+  ```
+  sudo tar --no-overwrite-dir -C / -xzf knoxAutoPolicy_0.6.3_linux-amd64.tar.gz
+  ```
+</p>
+</details>
+
+---
 
 3. Start Discovery Engine  
 
