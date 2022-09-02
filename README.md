@@ -1,21 +1,21 @@
 # KubeArmor security for Open Horizon workloads/agent
 
 KubeArmor is a runtime security engine that can protect k8s-orchestrated, or
-pure containerized workloads as well as VM/Bare-Metal based worloads. Open
-Horizon deploys the edge workloads in either containerized mode or in k8s
+pure containerized workloads as well as VM/Bare-Metal based workloads. Open
+Horizon deploys the edge workloads in either containerized mode or k8s
 orchestrated mode. The Open Horizon Edge Agent operates directly on the host as
 a systemd process.
 
 <p align="center"><img src="resources/imgs/OH-edge-kubearmor.png" width="768"></p>
 
-KubeArmor running on edge node provides visibility and protection for all the processes, file or network operation in the containers as well as those running directly on the host.  
+KubeArmor running on the edge node provides visibility and protection for all the processes, files, or network operations in the containers as well as those running directly on the host.  
 
 **Observability:** KubeArmor can provide container-aware observability information about the operations happening:
 1) from Agent node to Management Hub (and vice-versa)  
 2) between the containers and the agent edge node  
 3) inside the containers running on the Agent node
 
-**Enforcement:** KubeArmor can be used to apply security postures at the kernel-level (using LSMs like AppArmor, BPF-LSM). It can protect both the host and workloads running on it by enforcing either some predefined security policies or automatically generated least permissive security policies (using Discovery Engine).
+**Enforcement:** KubeArmor can be used to apply security postures at the kernel level (using LSMs like AppArmor, BPF-LSM). It can protect both the host and workloads running on it by enforcing either some predefined security policies or automatically generated least permissive security policies (using Discovery Engine).
 
 KubeArmor already supports k8s-orchestrated workloads and provides[ KVMService](https://github.com/kubearmor/kvm-service) that allows orchestrating security policies to VMs for non-k8s environments.  
 With v0.5.5 release, KubeArmor now supports standalone un-orchestrated containers. KubeArmor in this mode supports both enforcement and observability of the host and the containers running on it.
@@ -31,7 +31,7 @@ We also assume that [Open Horizon Home Assistant service](https://github.com/ope
 
 Now we will run KubeArmor as a systemd process on the Open Horizon Agent VM
 
-## Installation KubeArmor, kArmor and Discovery Engine  
+## Installation KubeArmor, kArmor, and Discovery Engine  
 
 * **KubeArmor Installation:**
 
@@ -133,7 +133,7 @@ ii. Unpack the tarball to the root directory:
 sudo systemctl daemon-reload  
 sudo systemctl start knoxAutoPolicy
 ```
-If you have previously installed discovery-engine, it's adviced to restart the service `sudo systemctl restart knoxAutoPolicy`
+If you have previously installed discovery-engine, it's advised to restart the service `sudo systemctl restart knoxAutoPolicy`
 
 4. To check Discovery Engine running status
 
@@ -230,17 +230,17 @@ Tags: WARNING
 </details>
 
 
-This will create an apparmor profile at `/etc/apparmor.d/` with the name `kubearmor_<containername>` (kubearmor_homeassistant here) and will load the profile to apparmor.
+This will create an AppArmor profile at `/etc/apparmor.d/` with the name `kubearmor_<containername>` (kubearmor_homeassistant here) and will load the profile to AppArmor.
  
-### Apply the apparmor profile to the desired container
-To run a container with KubeArmor enforcement using the apparmor profile kubearmor_homeassistant, pass `--security-opt apparmor=kubearmor_homeassistant` with the `docker run` command or if using docker-compose add:`security_opts: apparmor=kubearmor_homeassistant` under the container name in the docker-compose.yaml.
+### Apply the AppArmor profile to the desired container
+To run a container with KubeArmor enforcement using the AppArmor profile kubearmor_homeassistant, pass `--security-opt apparmor=kubearmor_homeassistant` with the `docker run` command or if using docker-compose add:`security_opts: apparmor=kubearmor_homeassistant` under the container name in the docker-compose.yaml.
 
 ## Auto discover least permissive security policy
 `karmor discover` tool can be used to automatically generate security policies. The output of the command can be redirected to a yaml file
 ```
 karmor discover --format yaml --labels "kubearmor.io/container.name=homeassistant" > discovered_policy.yaml
 ```
-This yaml file can be applied to KubeArmor to provide least permissive security posture for the homeassistant-service container.  
+This yaml file can be applied to KubeArmor to provide the least permissive security posture for the homeassistant-service container.  
 
 To apply security policy `discovered_policy.yaml`  
 
@@ -249,7 +249,7 @@ karmor vm policy add discovered_policy.yaml
 ```
 > **Note**: Host security policies are identified by `kind: KubeArmorHostPolicy` and Container security policies have `kind: KubeArmorPolicy`. 
 
-### Uninstall KubeArmor, kArmor and Discovery Engine  
+### Uninstall KubeArmor, kArmor, and Discovery Engine  
 We will first stop the KubeArmor and Discovery Engine system service and then will uninstall the packages.
 
 ```
