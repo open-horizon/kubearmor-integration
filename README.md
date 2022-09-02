@@ -256,5 +256,3 @@ We will first stop the KubeArmor and Discovery Engine system service and then wi
 sudo systemctl stop kubearmor knoxAutoPolicy
 sudo apt remove --purge kubearmor knoxautopolicy karmor
 ```
-
-
