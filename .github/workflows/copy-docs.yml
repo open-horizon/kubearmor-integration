@@ -16,7 +16,7 @@ jobs:
         commit_message: "Syncing from kubearmor-integration"
         clean: false
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
-        src_path: /README.md
+        src_path: README.md
         dst_path: /docs/kubearmor-integration/index.md
         dst_owner: open-horizon
         dst_repo_name: open-horizon.github.io
