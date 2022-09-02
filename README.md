@@ -82,8 +82,6 @@ iii. Unpack the tarball to the root directory:
    sudo journalctl -u kubearmor -f
    ```
 
-
-
 * **kArmor Installation:**
 
 > **Note** kArmor should already be installed by the above KubeArmor installation. Check installation using `karmor version`.  
@@ -107,7 +105,6 @@ curl -sfL http://get.kubearmor.io/ | sudo sh -s -- -b /usr/local/bin
    ```bash
    sudo apt install ./knoxAutoPolicy_0.6.3_linux-amd64.deb
    ```
-
 
 ---
 <details><summary> Note: For distributions other than Ubuntu/Debian</summary>
@@ -229,7 +226,6 @@ Tags: WARNING
 </details>
 
 </details>
-
 
 This will create an AppArmor profile at `/etc/apparmor.d/` with the name `kubearmor_<containername>` (kubearmor_homeassistant here) and will load the profile to AppArmor.
  
