@@ -1,0 +1,9 @@
+# Code owners are used by the Open Horizon community to consolidate common knowledge
+# into teams that can provide consistent and actionable feedback to
+# contributors. This section will describe groups of teams and suggestions
+# about the focus areas for review.
+
+# These owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence,
+# these owners will be requested for review when someone opens a pull request.
+*       @nyrahul @Ankurk99 @johnwalicki
