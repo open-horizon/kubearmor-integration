@@ -19,7 +19,7 @@ KubeArmor running on the edge node provides visibility and protection for all th
 **Enforcement:** KubeArmor can be used to apply security postures at the kernel level (using LSMs like AppArmor, BPF-LSM). It can protect both the host and workloads running on it by enforcing either some predefined security policies or automatically generated least permissive security policies (using Discovery Engine).
 
 KubeArmor already supports k8s-orchestrated workloads and provides [KVMService](https://github.com/kubearmor/kvm-service) that allows orchestrating security policies to VMs for non-k8s environments.
-With v0.5.5 release, KubeArmor now supports standalone un-orchestrated containers. KubeArmor in this mode supports both enforcement and observability of the host and the containers running on it.
+With v0.5.5 release, KubeArmor supports standalone un-orchestrated containers. KubeArmor in this mode supports both enforcement and observability of the host and the containers running on it.
 
 ## KubeArmor on Open Horizon
 
@@ -36,41 +36,34 @@ Now we will run KubeArmor as a systemd process on the Open Horizon Agent VM
 
 * **KubeArmor Installation:**
 
+> **Note:** For distributions other than Ubuntu/Debian
+> i. Refer [Installing BCC](https://github.com/iovisor/bcc/blob/master/INSTALL.md#installing-bcc) to install pre-requisites.
+> ii. Download release tarball from KubeArmor [releases](https://github.com/kubearmor/KubeArmor/releases)
+>
+> ```bash
+> wget https://github.com/kubearmor/KubeArmor/releases/download/v0.9.0/kubearmor_0.9.0_linux-amd64.tar.gz
+> ```
+>
+> iii. Unpack the tarball to the root directory:
+>
+> ```bash
+> sudo tar --no-overwrite-dir -C / -xzf kubearmor_0.9.0_linux-amd64.tar.gz
+> ```
+>
+
 1. Download the [latest release](https://github.com/kubearmor/KubeArmor/releases) of KubeArmor
 
    ```bash
-   wget https://github.com/kubearmor/KubeArmor/releases/download/v0.5.5/kubearmor_0.5.5_linux-amd64.deb
+   wget https://github.com/kubearmor/KubeArmor/releases/download/v0.9.0/kubearmor_0.9.0_linux-amd64.deb
    ```
 
 2. Install KubeArmor
 
    ```bash
-   sudo apt install ./kubearmor_0.5.5_linux-amd64.deb
+   sudo apt install ./kubearmor_0.9.0_linux-amd64.deb
    ```
 
-> Note that the above automatically installs `bpfcc-tools` with our package, but your distribution might have an older version of BCC. In case of errors, consider installing `bcc` from [source](https://github.com/iovisor/bcc/blob/master/INSTALL.md#source).
-
----
-<details><summary> Note: For distributions other than Ubuntu/Debian</summary>
-<p>
-
-i. Refer [Installing BCC](https://github.com/iovisor/bcc/blob/master/INSTALL.md#installing-bcc) to install pre-requisites.
-
-ii. Download release tarball from KubeArmor [releases](https://github.com/kubearmor/KubeArmor/releases)
-
-    ```bash
-    wget https://github.com/kubearmor/KubeArmor/releases/download/v0.5.5/kubearmor_0.5.5_linux-amd64.tar.gz
-    ```
-
-iii. Unpack the tarball to the root directory:
-
-     ```bash
-     sudo tar --no-overwrite-dir -C / -xzf kubearmor_0.5.5_linux-amd64.tar.gz
-     ```
-</p>
-</details>
-
----
+   > Note that the above automatically installs `bpfcc-tools` with our package, but your distribution might have an older version of BCC. In case of errors, consider installing `bcc` from [source](https://github.com/iovisor/bcc/blob/master/INSTALL.md#source).
 
 3. Start KubeArmor
 
@@ -97,6 +90,21 @@ curl -sfL http://get.kubearmor.io/ | sudo sh -s -- -b /usr/local/bin
 
 * **Discovery Engine Installation:**
 
+> **Note:** For distributions other than Ubuntu/Debian
+> i. Download release tarball from KubeArmor [releases](https://github.com/kubearmor/KubeArmor/releases)
+>
+> ```bash
+> wget https://github.com/accuknox/discovery-engine/releases/download/v0.6.3/knoxAutoPolicy_0.6.3_linux-amd64.tar.gz
+> ```
+>
+> ii. Unpack the tarball to the root directory:
+>
+> ```bash
+> sudo tar --no-overwrite-dir -C / -xzf knoxAutoPolicy_0.6.3_linux-amd64.tar.gz
+> ```
+>
+**Note:** If you have previously installed discovery-engine, it's advised to restart the service: `sudo systemctl restart knoxAutoPolicy`
+
 1. Download the [latest release](https://github.com/accuknox/discovery-engine/releases) of Discovery Engine
 
    ```bash
@@ -109,35 +117,12 @@ curl -sfL http://get.kubearmor.io/ | sudo sh -s -- -b /usr/local/bin
    sudo apt install ./knoxAutoPolicy_0.6.3_linux-amd64.deb
    ```
 
----
-<details><summary> Note: For distributions other than Ubuntu/Debian</summary>
-<p>
-
-i. Download release tarball from KubeArmor [releases](https://github.com/kubearmor/KubeArmor/releases)
-
-   ```bash
-   wget https://github.com/accuknox/discovery-engine/releases/download/v0.6.3/knoxAutoPolicy_0.6.3_linux-amd64.tar.gz
-   ```
-
-ii. Unpack the tarball to the root directory:
-
-    ```bash
-    sudo tar --no-overwrite-dir -C / -xzf knoxAutoPolicy_0.6.3_linux-amd64.tar.gz
-    ```
-
-</p>
-</details>
-
----
-
 3. Start Discovery Engine
 
-  ```bash
-  sudo systemctl daemon-reload
-  sudo systemctl start knoxAutoPolicy
-  ```
-
-If you have previously installed discovery-engine, it's advised to restart the service `sudo systemctl restart knoxAutoPolicy`
+   ```bash
+   sudo systemctl daemon-reload
+   sudo systemctl start knoxAutoPolicy
+   ```
 
 4. To check Discovery Engine running status
 
@@ -157,8 +142,7 @@ If you have previously installed discovery-engine, it's advised to restart the s
    karmor vm policy add block-secrets-access.yaml
    ```
 
-<details>
-<summary>block-secrets-access.yaml</summary>
+**block-secrets-access.yaml**
 
 ```yaml
 apiVersion: security.kubearmor.com/v1
@@ -186,14 +170,11 @@ spec:
     Block
 ```
 
-</details>
-
 Note: More predefined policies and auto-discovered policy can be found here: [https://github.com/kubearmor/openhorizon-demo/tree/main/Open-Horizon/policies](https://github.com/kubearmor/openhorizon-demo/tree/main/Open-Horizon/policies)
 
-Here notice the field `kubearmor.io/container.name: homeassistant` homeassistant is the container name to which we want to apply the policy.
+Here, notice the field `kubearmor.io/container.name: homeassistant` homeassistant is the container name to which we want to apply the policy.
 
-<details>
-<summary>karmor log</summary>
+**karmor log**
 
 ```yaml
 HostName: knownymousagent-VirtualBox
@@ -221,8 +202,7 @@ ProcessName: /usr/sbin/update-ca-certificates
 Tags: WARNING
 ```
 
-<details>
-<summary>Available filters</summary>
+**Available filters**
 
 ```text
 --logFilter <system|policy|all> - Filter to receive general system logs (system) or alerts on policy violation (policy) or both (all).
@@ -230,10 +210,6 @@ Tags: WARNING
 --operation <Process|File|Network> - Type of logs based on process, file or network
 --container - Specify container name to view container specific logs
 ```
-
-</details>
-
-</details>
 
 This will create an AppArmor profile at `/etc/apparmor.d/` with the name `kubearmor_<containername>` (kubearmor_homeassistant here) and will load the profile to AppArmor.
 
