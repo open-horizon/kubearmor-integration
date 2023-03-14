@@ -1,4 +1,4 @@
-# KubeArmor security for Open Horizon workloads/agent
+# KubeArmor security for Open Horizon workloads / agent
 
 KubeArmor is a runtime security engine that can protect k8s-orchestrated, or
 pure containerized workloads as well as VM/Bare-Metal based workloads. Open
@@ -34,9 +34,10 @@ Now we will run KubeArmor as a systemd process on the Open Horizon Agent VM
 
 ## Installation KubeArmor, kArmor, and Discovery Engine
 
-* **KubeArmor Installation:**
+### **KubeArmor Installation:**
 
 > **Note:** For distributions other than Ubuntu/Debian
+>
 > i. Refer [Installing BCC](https://github.com/iovisor/bcc/blob/master/INSTALL.md#installing-bcc) to install pre-requisites.
 > ii. Download release tarball from KubeArmor [releases](https://github.com/kubearmor/KubeArmor/releases)
 >
@@ -78,7 +79,7 @@ Now we will run KubeArmor as a systemd process on the Open Horizon Agent VM
    sudo journalctl -u kubearmor -f
    ```
 
-* **kArmor Installation:**
+### **kArmor Installation:**
 
 > **Note** kArmor should already be installed by the above KubeArmor installation. Check installation using `karmor version`.
 
@@ -88,9 +89,10 @@ If kArmor is not installed run:
 curl -sfL http://get.kubearmor.io/ | sudo sh -s -- -b /usr/local/bin
 ```
 
-* **Discovery Engine Installation:**
+### **Discovery Engine Installation:**
 
 > **Note:** For distributions other than Ubuntu/Debian
+>
 > i. Download release tarball from KubeArmor [releases](https://github.com/kubearmor/KubeArmor/releases)
 >
 > ```bash
@@ -103,6 +105,7 @@ curl -sfL http://get.kubearmor.io/ | sudo sh -s -- -b /usr/local/bin
 > sudo tar --no-overwrite-dir -C / -xzf knoxAutoPolicy_0.6.3_linux-amd64.tar.gz
 > ```
 >
+
 **Note:** If you have previously installed discovery-engine, it's advised to restart the service: `sudo systemctl restart knoxAutoPolicy`
 
 1. Download the [latest release](https://github.com/accuknox/discovery-engine/releases) of Discovery Engine
@@ -170,7 +173,7 @@ spec:
     Block
 ```
 
-Note: More predefined policies and auto-discovered policy can be found here: [https://github.com/kubearmor/openhorizon-demo/tree/main/Open-Horizon/policies](https://github.com/kubearmor/openhorizon-demo/tree/main/Open-Horizon/policies)
+Note: Additional predefined policies and auto-discovered policy can be found here: [https://github.com/kubearmor/openhorizon-demo/tree/main/Open-Horizon/policies](https://github.com/kubearmor/openhorizon-demo/tree/main/Open-Horizon/policies)
 
 Here, notice the field `kubearmor.io/container.name: homeassistant` homeassistant is the container name to which we want to apply the policy.
 
