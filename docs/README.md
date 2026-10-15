@@ -3,7 +3,7 @@ copyright: Contributors to the Open Horizon project
 years: 2022 - 2026
 title: KubeArmor Integration
 description: KubeArmor Security for Open Horizon workloads / agent
-lastupdated: 2026-08-21
+lastupdated: 2026-10-15
 nav_order: 16
 ---
 
@@ -69,7 +69,7 @@ Now we will run KubeArmor as a systemd process on the Open Horizon Agent VM
    sudo apt install ./kubearmor_0.9.0_linux-amd64.deb
    ```
 
-   > Note that the above automatically installs `bpfcc-tools` with our package, but your distribution might have an older version of BCC. In case of errors, consider installing `bcc` from [source ](https://github.com/iovisor/bcc/blob/master/INSTALL.md#source){:target="_blank"}{: .externalLink}..
+   > Note that the above automatically installs `bpfcc-tools` with our package, but your distribution might have an older version of BCC. In case of errors, consider installing `bcc` from [source ](https://github.com/iovisor/bcc/blob/master/INSTALL.md#source){:target="_blank"}{: .externalLink}.
 
 3. Start KubeArmor
 
