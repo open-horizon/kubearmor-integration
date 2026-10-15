@@ -23,8 +23,6 @@ With v0.5.5 release, KubeArmor supports standalone un-orchestrated containers. K
 
 ## KubeArmor on Open Horizon
 
-> **Note**
-> This guide assumes both the Open Horizon Management Hub and Agent VM are running Ubuntu 20.04.
 We will first need to install Open Horizon Management Hub and Agent node components. For that please follow the [Open Horizon setup](https://github.com/kubearmor/KubeArmor/wiki/Open-Horizon-setup) guide.
 We also assume that [Open Horizon Home Assistant service](https://github.com/open-horizon-services/service-homeassistant) is running on the agent edge node.
 
